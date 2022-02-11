@@ -26,8 +26,9 @@ func main() {
 
 	logger := zerolog.New(f).With().Timestamp().Logger()
 
-	logger.Info().Msg("Established")
+	logger.Debug().Msg("Established")
 	logger.Info().Msg("Creating output file")
+	logger.Info().Msgf("Downloading file from: %s", url)
 	out, err := os.Create("output.json")
 	if err != nil {
 		logger.Error().Err(err)

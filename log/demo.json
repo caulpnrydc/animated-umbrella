@@ -19,3 +19,25 @@
 {"level":"info","time":1644545520,"message":"Creating output file"}
 {"level":"info","time":1644545520,"message":"Downloading File"}
 {"level":"info","time":1644545520,"message":"Saving output to file"}
+{"level":"debug","time":1644545668,"message":"Established"}
+{"level":"info","time":1644545668,"message":"Creating output file"}
+{"level":"info","time":1644545668,"message":"Downloading File"}
+{"level":"info","time":1644545668,"message":"Saving output to file"}
+{"level":"debug","time":1644545699,"message":"Established"}
+{"level":"info","time":1644545699,"message":"Creating output file"}
+{"level":"info","time":1644545699,"message":"Downloading File"}
+{"level":"info","time":1644545700,"message":"Saving output to file"}
+{"level":"debug","time":1644545819,"message":"Established"}
+{"level":"info","time":1644545819,"message":"Creating output file"}
+{"level":"error","time":1644545819,"message":"Downloading File"}
+{"level":"info","time":1644545819,"message":"Saving output to file"}
+{"level":"debug","time":1644546010,"message":"Established"}
+{"level":"info","time":1644546010,"message":"Creating output file"}
+{"level":"info","time":1644546010,"message":"Downloading file from: %!(EXTRA string=https://filesamples.com/samples/code/json/sample2.json)"}
+{"level":"info","time":1644546010,"message":"Downloading File"}
+{"level":"info","time":1644546010,"message":"Saving output to file"}
+{"level":"debug","time":1644546033,"message":"Established"}
+{"level":"info","time":1644546033,"message":"Creating output file"}
+{"level":"info","time":1644546033,"message":"Downloading file from: https://filesamples.com/samples/code/json/sample2.json"}
+{"level":"info","time":1644546033,"message":"Downloading File"}
+{"level":"info","time":1644546034,"message":"Saving output to file"}
