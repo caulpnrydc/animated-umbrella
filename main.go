@@ -24,18 +24,23 @@ func main() {
 
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 
-	log.Info().Msg("Established")
-	log.Info().Msg("Creating output file")
+	logger := zerolog.New(f).With().Timestamp().Logger()
+
+	logger.Info().Msg("Established")
+	logger.Info().Msg("Creating output file")
 	out, err := os.Create("output.json")
 	if err != nil {
-		log.Error().Err(err)
+		logger.Error().Err(err)
 	}
 	defer out.Close()
 
-	log.Info().Msg("Downloading File")
+	logger.Info().Msg("Downloading File")
 	resp, err := http.Get(url)
+	if err != nil {
+		logger.Error().Err(err)
+	}
 	defer resp.Body.Close()
 
-	log.Info().Msg("Saving output to file")
+	logger.Info().Msg("Saving output to file")
 	_, err = io.Copy(out, resp.Body)
 }
