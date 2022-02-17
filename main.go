@@ -14,10 +14,10 @@ import (
 var m = map[string]string{}
 
 func main() {
-	m["sample2.json"] = "https://filesamples.com/samples/code/json/sample2.json"
-	m["sample1.json"] = "https://filesamples.com/samples/code/json/sample1.json"
-	m["sample3.json"] = "https://filesamples.com/samples/code/json/sample3.json"
-	m["sample4.json"] = "https://filesamples.com/samples/code/json/sample4.json"
+	m["files/sample2.json"] = "https://filesamples.com/samples/code/json/sample2.json"
+	m["files/sample1.json"] = "https://filesamples.com/samples/code/json/sample1.json"
+	m["files/sample3.json"] = "https://filesamples.com/samples/code/json/sample3.json"
+	m["files/sample4.json"] = "https://filesamples.com/samples/code/json/sample4.json"
 
 	logFileName := "log/demo.json"
 	f, err := os.OpenFile(logFileName, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
@@ -54,6 +54,12 @@ func main() {
 		_, err = io.Copy(out, resp.Body)
 	}
 
+	remove, err := exec.Command("git", "rm", "*.json").Output()
+	if err != nil {
+		logger.Error().Err(err)
+	}
+	fmt.Printf("Removed files %s\n", remove)
+
 	add, err := exec.Command("git", "add", "*.json").Output()
 	if err != nil {
 		logger.Error().Err(err)
@@ -72,7 +78,7 @@ func main() {
 	}
 	fmt.Printf("Adding %s\n", commit)
 
-	push, err := exec.Command("git", "push", "origin", "master").Output()
+	push, err := exec.Command("git", "push", "origin", "tmp/kb").Output()
 	if err != nil {
 		logger.Error().Err(err)
 	}
