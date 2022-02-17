@@ -5,12 +5,13 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"os/exec"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
 
-var m = make(map[string]string)
+var m = map[string]string{}
 
 func main() {
 	m["sample2.json"] = "https://filesamples.com/samples/code/json/sample2.json"
@@ -52,4 +53,29 @@ func main() {
 		logger.Info().Msgf("Saving output to file: %s", key)
 		_, err = io.Copy(out, resp.Body)
 	}
+
+	add, err := exec.Command("git", "add", "*.json").Output()
+	if err != nil {
+		logger.Error().Err(err)
+	}
+	fmt.Printf("Adding %s\n", add)
+
+	out, err := exec.Command("git", "status").Output()
+	if err != nil {
+		logger.Error().Err(err)
+	}
+	fmt.Printf("Status is %s\n", out)
+
+	commit, err := exec.Command("git", "commit", "-m", "\"adding json files\"").Output()
+	if err != nil {
+		logger.Error().Err(err)
+	}
+	fmt.Printf("Adding %s\n", commit)
+
+	push, err := exec.Command("git", "push", "origin", "master").Output()
+	if err != nil {
+		logger.Error().Err(err)
+	}
+	fmt.Printf("Pushed to Github %s\n", push)
+
 }
